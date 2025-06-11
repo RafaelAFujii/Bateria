@@ -1,36 +1,39 @@
 // Função para detectar o click do mouse.
 const drumButtons = document.querySelectorAll('.drum'); //Pequisa no HTML todos os elementos com a classe "drum".
 drumButtons.forEach(button => { //Verifica todos os botões encontrados 
-    button.addEventListener('click', () => { //Cria um evento ao clicar no botão
-        let buttonLetter = this.innerHTML 
-        console.log("A letra que foi pressionada é: " + buttonLetter);
-        switch (buttonLetter) { 
+    button.addEventListener('click', (event) => { //Cria um evento ao clicar no botão
+        let buttonLetter = event.currentTarget.innerHTML; //Pega o conteúdo do botão clicado
+        let letraMinuscula = buttonLetter.toLowerCase(); //Converte a letra do botão para minúscula
+        switch (letraMinuscula) { 
             case 'a':
-                console.log("Você pressionou a tecla A");
+            case 'l':
+                let somCrash = new Audio('sounds/crash.mp3'); //Cria um novo objeto de áudio com o som do crash
+                somCrash.play(); //Reproduz o som do crash
                 break;
             
             case 's':
-                console.log("Você pressionou a tecla S");
+                let somKick = new Audio('./sounds/kickbass.mp3'); //Cria um novo objeto de áudio com o som do kick
+                somKick.play(); //Reproduz o som do kick
                 break;
 
             case 'd':
-                console.log("Você pressionou a tecla D");
+                let somSnare = new Audio('./sounds/snare.mp3'); //Cria um novo objeto de áudio com o som do snare
+                somSnare.play(); //Reproduz o som do snare
                 break;
 
             case 'g':
-                console.log("Você pressionou a tecla G");
+                let somTom1 = new Audio('./sounds/tom1.mp3'); //Cria um novo objeto de áudio com o som do tom1
+                somTom1.play(); //Reproduz o som do tom1
                 break;
 
             case 'j':
-                console.log("Você pressionou a tecla J");
+                let somTom2 = new Audio('./sounds/tom2.mp3'); //Cria um novo objeto de áudio com o som do tom2
+                somTom2.play(); //Reproduz o som do tom2
                 break;
 
             case 'k':
-                console.log("Você pressionou a tecla K");
-                break;
-
-            case 'l':
-                console.log("Você pressionou a tecla L");
+                let somTom3 = new Audio('./sounds/tom3.mp3'); //Cria um novo objeto de áudio com o som do tom3
+                somTom3.play(); //Reproduz o som do tom3
                 break;
 
             default:
@@ -41,6 +44,43 @@ drumButtons.forEach(button => { //Verifica todos os botões encontrados
 
 // Função para detectar o pressionamento da tecla.
 
-// Função para alterar entre a teclas dos teclados para acionar o som
+document.addEventListener('keydown',function(event) { //Cria um evento ao pressionar uma tecla
+    let letraTecla =event.key.toLowerCase(); //Converte a tecla pressionada para minúscula
+    switch (letraTecla) { 
+        case 'a':
+        case 'l':
+            let somCrash = new Audio('sounds/crash.mp3'); //Cria um novo objeto de áudio com o som do crash
+            somCrash.play(); //Reproduz o som do crash
+            break;
+        
+        case 's':
+            let somKick = new Audio('./sounds/kickbass.mp3'); //Cria um novo objeto de áudio com o som do kick
+            somKick.play(); //Reproduz o som do kick
+            break;
+
+        case 'd':
+            let somSnare = new Audio('./sounds/snare.mp3'); //Cria um novo objeto de áudio com o som do snare
+            somSnare.play(); //Reproduz o som do snare
+            break;
+
+        case 'g':
+            let somTom1 = new Audio('./sounds/tom1.mp3'); //Cria um novo objeto de áudio com o som do tom1
+            somTom1.play(); //Reproduz o som do tom1
+            break;
+
+        case 'j':
+            let somTom2 = new Audio('./sounds/tom2.mp3'); //Cria um novo objeto de áudio com o som do tom2
+            somTom2.play(); //Reproduz o som do tom2
+            break;
+
+        case 'k':
+            let somTom3 = new Audio('./sounds/tom3.mp3'); //Cria um novo objeto de áudio com o som do tom3
+            somTom3.play(); //Reproduz o som do tom3
+            break;
+
+        default:
+            console.log("Tecla não reconhecida");
+    }
+});
 
 // Função para animar os botões na hora de pressionar.
