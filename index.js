@@ -3,6 +3,11 @@ const drumButtons = document.querySelectorAll('.drum'); //Pequisa no HTML todos 
 drumButtons.forEach(button => { //Verifica todos os botões encontrados 
     button.addEventListener('click', (event) => { //Cria um evento ao clicar no botão
         let buttonLetter = event.currentTarget.innerHTML; //Pega o conteúdo do botão clicado
+        const botaoClicado = event.currentTarget; //Armazena o botão clicado
+        botaoClicado.classList.add('pressed'); //Adiciona a classe "pressed" ao botão clicado para animar
+        setTimeout(() => { //Define um tempo para remover a classe "pressed"
+            botaoClicado.classList.remove('pressed'); //Remove a classe "pressed" após o tempo definido
+        }, 100); //Tempo de 100 milissegundos
         let letraMinuscula = buttonLetter.toLowerCase(); //Converte a letra do botão para minúscula
         switch (letraMinuscula) { 
             case 'a':
@@ -42,10 +47,16 @@ drumButtons.forEach(button => { //Verifica todos os botões encontrados
     })
 });
 
-// Função para detectar o pressionamento da tecla.
-
+// Função para detectar o pressionamento da tecla
 document.addEventListener('keydown',function(event) { //Cria um evento ao pressionar uma tecla
     let letraTecla =event.key.toLowerCase(); //Converte a tecla pressionada para minúscula
+    const botaoAtivo = document.querySelector("." + letraTecla); //Seleciona o botão correspondente à tecla pressionada
+    if (botaoAtivo) { //Verifica se o botão existe
+        botaoAtivo.classList.add('pressed'); //Adiciona a classe "pressed" ao botão correspondente para animar
+        setTimeout(() => { //Define um tempo para remover a classe "pressed"
+            botaoAtivo.classList.remove('pressed'); //Remove a classe "pressed" após o tempo definido
+        }, 100); //Tempo de 100 milissegundos 
+    }
     switch (letraTecla) { 
         case 'a':
         case 'l':
@@ -82,5 +93,3 @@ document.addEventListener('keydown',function(event) { //Cria um evento ao pressi
             console.log("Tecla não reconhecida");
     }
 });
-
-// Função para animar os botões na hora de pressionar.
